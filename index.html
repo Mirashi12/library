@@ -9,7 +9,21 @@
     <title>Library</title>
 </head>
 <body>
-    <div class="booklist"></div>
+    <header>
+        <h1>My Library</h1>
+    </header>
+    <div>
+        <table id="libraryTable">
+            <tbody>
+                <tr>
+                    <th><h2>Title<h2></th>
+                    <th><h2>Author</h2></th>
+                    <th><h2># of pages</h2></th>
+                    <th><h2>Read ?</h2></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <button id="addLibrary" onclick="displayBookForm()">Add Book</button>
     <div id="formBook">
         <form id="addForm">
@@ -35,7 +49,7 @@
                         </select>
                     </li>
                 </uL>
-                <button id="addBook" type="submit" onclick="addLibrary()">Submit</button>
+                <button id="addBook" type="button" onclick="addLibrary()">Submit</button>
             </fieldset>
         </form>
     </div>
