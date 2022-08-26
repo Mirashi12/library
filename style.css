@@ -3,20 +3,131 @@
     padding: 0;
 }
 
-#formBook {
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 5fr;
+    background-color:rgb(105, 100, 100);
+    font-family: 'Lato', sans-serif;
+}
+
+header {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    justify-self: center;
+    padding-top: 50px;
+    color: whitesmoke;
+}
+
+/* #formBook {   
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     overflow-x: hidden;
 }
+*/
 
-table, th, td {
-    border: solid 1px red;
+table, th {
+    border: solid 1px rgb(0, 0, 0);
     border-collapse: collapse;
     text-align: center;
 }
 
-table {
-    width: 100%;
+th {
+    border: solid 2px black;
+    height: 40px;
 }
+
+tr td {
+
+    height: 40px;
+    font-size: 18px;
+}
+
+tr:nth-of-type(2n) {
+    background-color: rgb(111, 110, 110);
+}
+
+#libraryDisplay {
+    justify-self: center;
+}
+
+#libraryTable {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    width: 75vw;
+    justify-content: center;
+}
+
+#libraryTable th {
+    background-color: rgb(76, 73, 73);
+    color: white;
+}
+
+#libraryTable td {
+    font-weight: 500;
+}
+
+#formBook {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: rgb(80, 80, 90);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding-top: 50px;
+    width: max(20vw, 250px);
+}
+
+#formBook h2 {
+    color: white;
+}
+
+#addForm {
+    width: 90%;
+}
+
+#addForm fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    height: 330px;
+}
+
+#addForm fieldset ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    list-style: none;
+    gap: 20px;
+}
+
+#addForm fieldset label {
+    display: block;
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+}
+
+#addForm input {
+    width: max(75%, 150px);
+    border:none;
+}
+
+#addForm #pages {
+    width: 50px;
+}
+
+#addForm button {
+    height: 50px;
+    width: 80px;
+    background-color: rgb(151, 146, 146);
+    border: none;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+
+

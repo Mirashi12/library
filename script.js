@@ -49,6 +49,6 @@ function addLibrary () {
 };
 
 // Sets the width of the form so it can appear when the button is clicked
-function displayBookForm () {
-        document.getElementById("formBook").style.width = "100%";
-}
+//function displayBookForm () {
+//        document.getElementById("formBook").style.width = "100%";
+//}

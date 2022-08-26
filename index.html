@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"> 
     <script src="./script.js" defer></script>
     <title>Library</title>
 </head>
@@ -12,7 +15,7 @@
     <header>
         <h1>My Library</h1>
     </header>
-    <div>
+    <div id="libraryDisplay">
         <table id="libraryTable">
             <tbody>
                 <tr>
@@ -24,8 +27,8 @@
             </tbody>
         </table>
     </div>
-    <button id="addLibrary" onclick="displayBookForm()">Add Book</button>
     <div id="formBook">
+        <h2>Add a book to the library</h2>
         <form id="addForm">
             <fieldset>
                 <uL>
@@ -45,7 +48,7 @@
                         <label for="read">Read?</label>
                         <select name="read" id="read">
                             <option value="yes">Yes</option>
-                            <option value="no">no</option>
+                            <option value="no">No</option>
                         </select>
                     </li>
                 </uL>
