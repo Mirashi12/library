@@ -6,7 +6,7 @@
 body {
     height: 100vh;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 4fr .2fr minmax(1fr,180px);
     grid-template-rows: 1fr 5fr;
     background-color:rgb(105, 100, 100);
     font-family: 'Lato', sans-serif;
@@ -46,19 +46,27 @@ tr td {
     font-size: 18px;
 }
 
+tr.highlighted:nth-of-type(n) {
+    background-color: rgb(178, 174, 174);
+}
+
 tr:nth-of-type(2n) {
     background-color: rgb(111, 110, 110);
 }
 
 #libraryDisplay {
     justify-self: center;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    width: 86%;
 }
 
 #libraryTable {
     grid-row-start: 2;
     grid-column-start: 1;
-    width: 75vw;
+    width: 65vw;
     justify-content: center;
+    align-self: center;
 }
 
 #libraryTable th {
@@ -70,8 +78,36 @@ tr:nth-of-type(2n) {
     font-weight: 500;
 }
 
-#formBook {
+#table_pages {
+    width: 10%;
+}
+
+#table_read {
+    width: 10%;
+}
+
+#icon_div {
+    display: flex;
+    flex-direction: column;
     grid-column-start: 2;
+    grid-row-start: 2;
+    padding-top: 50px;
+    gap: 10px;
+}
+
+#icon_div img {
+    width: 30px;
+    opacity: 0;
+}
+
+#icon_div img.visible {
+    opacity: 0.5;
+}
+
+
+
+#formBook {
+    grid-column-start: 3;
     grid-row-start: 1;
     grid-row-end: 3;
     background-color: rgb(80, 80, 90);
@@ -80,7 +116,7 @@ tr:nth-of-type(2n) {
     align-items: center;
     gap: 50px;
     padding-top: 50px;
-    width: max(20vw, 250px);
+    max-width: 100%;
 }
 
 #formBook h2 {
@@ -129,5 +165,4 @@ tr:nth-of-type(2n) {
     border-radius: 6px;
     margin-top: 30px;
 }
-
 

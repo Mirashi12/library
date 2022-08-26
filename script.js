@@ -25,6 +25,7 @@ function displayLibrary () {
     myLibrary.forEach(element => {
         let tr = libraryTable.insertRow();
         tr.setAttribute('class', 'book_display');
+        tr.setAttribute('data-index', myLibrary.indexOf(element));
         tr.insertCell().textContent = element.title;
         tr.insertCell().textContent = element.author;
         tr.insertCell().textContent = element.pages;
@@ -36,18 +37,20 @@ function displayLibrary () {
             if (this.getAttribute('data-read_status') == 'yes') {
                 this.setAttribute('data-read_status', 'no');
                 tr.cells[3].innerText = 'no';
-            } else {
+                element.read = 'no'
+            } else if (this.getAttribute('data-read_status') == 'no') {
                 this.setAttribute('data-read_status', 'yes');
                 tr.cells[3].innerText = 'yes';
+                element.read = 'yes';
             }
-        })
+        });
 
-        let btn = document.createElement('button');
-        btn.textContent = 'Remove';
-        btn.setAttribute('class', 'remove_button');
-        btn.setAttribute('data-index', myLibrary.indexOf(element));  // Adds a data attribute containing the index of the book
-        btn.setAttribute('onclick', "removeBook(this.getAttribute('data-index'))"); // Passes the index to the deletion function
-        tr.append(btn);
+        tr.addEventListener('click', function displayButtons () {
+            let index_icon = 'img[data-index=' + '"' + myLibrary.indexOf(element) + '"]';
+            let remove_icon = document.querySelector(index_icon);
+            remove_icon.classList.toggle('visible');
+            this.classList.toggle('highlighted');
+        });
     });
 }
 
@@ -57,6 +60,11 @@ function cleanDisplay () {
     book_rows.forEach(book => {
         book.remove();
     });
+
+    let all_icons = document.querySelectorAll('.remove_button');
+    all_icons.forEach( element => { 
+        element.remove();
+    });
 }
 
 //Creates the object and calls its addBook method on form submit
@@ -65,16 +73,28 @@ function addLibrary () {
     newBook.addBook();
     cleanDisplay();
     displayLibrary();
+    addIcons();
 };
 
 function removeBook(book) {
     myLibrary.splice(book,1);
     cleanDisplay();
     displayLibrary();
+    addIcons();
 }
 
-function updateStatus () {
-
+function addIcons () {
+    myLibrary.forEach(element => {
+        let icon_div = document.getElementById('icon_div');
+        let rmv_icon = document.createElement('img');
+        rmv_icon.setAttribute('src', './resources/delete_icon.svg');
+        rmv_icon.setAttribute('class', 'remove_button');
+        rmv_icon.setAttribute('data-index', myLibrary.indexOf(element));  // Adds a data attribute containing the index of the book
+        rmv_icon.addEventListener('click', function () {
+            removeBook(this.getAttribute('data-index'));
+        });                                                                  // Passes the index to the deletion function
+        icon_div.append(rmv_icon);
+    });
 }
 
 
