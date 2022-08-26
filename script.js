@@ -29,6 +29,19 @@ function displayLibrary () {
         tr.insertCell().textContent = element.author;
         tr.insertCell().textContent = element.pages;
         tr.insertCell().textContent = element.read;
+        tr.setAttribute('data-read_status', element.read);
+
+
+        tr.addEventListener('dblclick', function () {
+            if (this.getAttribute('data-read_status') == 'yes') {
+                this.setAttribute('data-read_status', 'no');
+                tr.cells[3].innerText = 'no';
+            } else {
+                this.setAttribute('data-read_status', 'yes');
+                tr.cells[3].innerText = 'yes';
+            }
+        })
+
         let btn = document.createElement('button');
         btn.textContent = 'Remove';
         btn.setAttribute('class', 'remove_button');
@@ -58,6 +71,10 @@ function removeBook(book) {
     myLibrary.splice(book,1);
     cleanDisplay();
     displayLibrary();
+}
+
+function updateStatus () {
+
 }
 
 
