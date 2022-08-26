@@ -29,6 +29,12 @@ function displayLibrary () {
         tr.insertCell().textContent = element.author;
         tr.insertCell().textContent = element.pages;
         tr.insertCell().textContent = element.read;
+        let btn = document.createElement('button');
+        btn.textContent = 'Remove';
+        btn.setAttribute('class', 'remove_button');
+        btn.setAttribute('data-index', myLibrary.indexOf(element));  // Adds a data attribute containing the index of the book
+        btn.setAttribute('onclick', "removeBook(this.getAttribute('data-index'))"); // Passes the index to the deletion function
+        tr.append(btn);
     });
 }
 
@@ -47,6 +53,13 @@ function addLibrary () {
     cleanDisplay();
     displayLibrary();
 };
+
+function removeBook(book) {
+    myLibrary.splice(book,1);
+    cleanDisplay();
+    displayLibrary();
+}
+
 
 // Sets the width of the form so it can appear when the button is clicked
 //function displayBookForm () {
