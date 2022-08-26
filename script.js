@@ -17,18 +17,35 @@ function book () {
 book.proto = {
     addBook: function () {
         myLibrary.push(this);
-        let tr = libraryTable.insertRow();
-        tr.insertCell().textContent = this.title;
-        tr.insertCell().textContent = this.author;
-        tr.insertCell().textContent = this.pages;
-        tr.insertCell().textContent = this.read;
     }
+}
+
+// Take every book object in the library array and add their attributes in a new row/cells
+function displayLibrary () {    
+    myLibrary.forEach(element => {
+        let tr = libraryTable.insertRow();
+        tr.setAttribute('class', 'book_display');
+        tr.insertCell().textContent = element.title;
+        tr.insertCell().textContent = element.author;
+        tr.insertCell().textContent = element.pages;
+        tr.insertCell().textContent = element.read;
+    });
+}
+
+// Selects all rows displaying book attributes and deletes them
+function cleanDisplay () {
+    let book_rows = document.querySelectorAll('.book_display');
+    book_rows.forEach(book => {
+        book.remove();
+    });
 }
 
 //Creates the object and calls its addBook method on form submit
 function addLibrary () {
     let newBook = book();
     newBook.addBook();
+    cleanDisplay();
+    displayLibrary();
 };
 
 // Sets the width of the form so it can appear when the button is clicked
